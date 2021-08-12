@@ -15,6 +15,9 @@ export const Timer = ( { milisegundos }: TimerArgs ) => {
     useEffect(() => {
         ref.current && clearInterval( ref.current );
         ref.current = setInterval( () => setSegundos( s => s + 1), milisegundos);
+        return () => {
+            ref.current && clearInterval( ref.current );
+        }
     }, [milisegundos]);
 
     return (
